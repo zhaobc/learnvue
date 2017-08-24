@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!--3.组件添加到Vue实例
+	<div id="app1">
+		<my-component></my-component>
+	</div>-->
+
+	<div id="app2">
+		<my-component></my-component>
+	</div>
+	<script type="text/x-template" id="myComponent">
+		<div>Mycomponent is testing.</div>
+	</script>
+</body>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	//1.创建组件
+	var myComponent=Vue.extend({
+		template:'#myComponent'//'<div>Mycomponent test.</div>'
+	})
+	//2.注册组件
+	//Vue.component('my-component',myComponent);
+
+	/*new Vue({
+		el:'#app1'
+	})*/
+
+	var vm=new Vue({
+		el:'#app2',
+		//局部组件不能在其他组件中使用
+		components:{
+			"my-component":myComponent
+		}
+	})
+</script>
+</html>
